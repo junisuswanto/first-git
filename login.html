@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage</title>
+  </head>
+  <body>
+    <h1>LocalStorage</h1>
+    <!-- <h2>Login</h2> -->
+    <div id="sudahLogin">
+      <h2>Anda sudah Login</h2>
+      <button id="logout">Logout</button>
+    </div>
+
+    <div id="belumLogin">
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="username" />
+        <button>Login</button>
+      </form>
+    </div>
+
+    <script>
+      // document.onload = () => {
+      const sudahLogin = document.querySelector('#sudahLogin');
+      const belumLogin = document.querySelector('#belumLogin');
+      const data_login = JSON.parse(localStorage.getItem('tasks')) || [];
+      //   console.log(belumLogin);
+      //   sudahLogin.style.display = 'block';
+
+      document.querySelector('form').onsubmit = (e) => {
+        e.prevenDefault();
+        //localStorage.setItem('user',);
+        if (data_login) {
+          sudahLogin.style.display = 'block';
+          belumLogin.style.display = 'none';
+        } else {
+          sudahLogin.style.display = 'none';
+          belumLogin.style.display = 'block';
+        }
+      };
+
+      document.querySelector('#logout').onclick = () => {
+        if (data_login) {
+          sudahLogin.style.display = 'block';
+          belumLogin.style.display = 'none';
+        } else {
+          sudahLogin.style.display = 'none';
+          belumLogin.style.display = 'block';
+        }
+      };
+
+      //}  e.prevenDefault();
+    </script>
+  </body>
+</html>
